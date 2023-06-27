@@ -21,14 +21,28 @@ def reservations(request):
     return render(request, 'bookings.html', {"bookings": booking_json})
 
 
+# Api View
 class MenuItemView(generics.ListCreateAPIView):
     serializer_class = serializers.MenuItemSerializer
     queryset = models.MenuItem.objects.all()
+    permission_classes = [permissions.IsAuthenticated]
+
+    def get_permissions(self):
+        if (self.request.method == "GET"):
+            return []
+
+        return super().get_permissions()
 
 
 class SingleMenuItemView(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = serializers.MenuItemSerializer
     queryset = models.MenuItem.objects.all()
+
+    def get_permissions(self):
+        if (self.request.method == "GET"):
+            return []
+
+        return super().get_permissions()
 
 
 class BookingViewSet(viewsets.ModelViewSet):
