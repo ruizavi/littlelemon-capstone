@@ -9,10 +9,10 @@ class UserSerializer(serializers.ModelSerializer):
         fields = ["url", "username", "email", "groups"]
 
 
-class MenuSerializer(serializers.ModelSerializer):
+class MenuItemSerializer(serializers.ModelSerializer):
     class Meta:
-        model = models.MenuTable
-        fields = "__all__"
+        model = models.MenuItem
+        fields = ["id", "title", "price", "inventory"]
 
 
 class BookingSerializer(serializers.ModelSerializer):
