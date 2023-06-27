@@ -3,9 +3,13 @@ from rest_framework import generics, viewsets, permissions
 from . import models, serializers
 
 
-# Create your views here.
+# Static Content
 def index(request):
     return render(request, "index.html", {})
+
+
+def about(request):
+    return render(request, 'about.html', {})
 
 
 class MenuItemView(generics.ListCreateAPIView):
