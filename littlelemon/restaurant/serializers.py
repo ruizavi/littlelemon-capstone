@@ -13,3 +13,9 @@ class MenuSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.MenuTable
         fields = "__all__"
+
+
+class BookingSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = models.Booking
+        fields = "__all__"
