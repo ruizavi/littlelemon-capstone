@@ -23,6 +23,7 @@ logs/
 *.sublime-project
 *.sublime-workspace
 
-
 build/
 dist/
+
+pyvenv.cfg
