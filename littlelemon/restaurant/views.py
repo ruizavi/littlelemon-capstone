@@ -1,5 +1,7 @@
+from datetime import datetime
 from django.shortcuts import render
 from rest_framework import generics, viewsets, permissions
+from django.core import serializers as sr
 from . import models, serializers
 
 
@@ -10,6 +12,13 @@ def index(request):
 
 def about(request):
     return render(request, 'about.html', {})
+
+
+def reservations(request):
+    date = request.GET.get('date', datetime.today().date())
+    bookings = models.Booking.objects.all()
+    booking_json = sr.serialize('json', bookings)
+    return render(request, 'bookings.html', {"bookings": booking_json})
 
 
 class MenuItemView(generics.ListCreateAPIView):
